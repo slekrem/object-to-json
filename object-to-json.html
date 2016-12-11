@@ -8,31 +8,26 @@
 -->
 
 <dom-module id="object-to-json">
-    <template>
-        <style>
-            :host {
-                display: block;
-            }
-        </style>
-        <pre>{{objectAsJSON}}</pre>
-    </template>
-
-    <script>
-        Polymer({
-
-            is: 'object-to-json',
-
-            properties: {
-                object: {
-                    type: Object,
-                    observer: "_objectChanged"
-                }
-            },
-
-            _objectChanged: function() {
-                this.objectAsJSON = JSON.stringify(this.object, null, 4);
-            }
-
-        });
-    </script>
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <pre>{{objectAsJSON}}</pre>
+  </template>
+  <script>
+  Polymer({
+    is: 'object-to-json',
+    properties: {
+      object: {
+        type: Object,
+        observer: "_objectChanged"
+      }
+    },
+    _objectChanged: function() {
+      this.objectAsJSON = JSON.stringify(this.object, null, 2);
+    }
+  });
+  </script>
 </dom-module>
