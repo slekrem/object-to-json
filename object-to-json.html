@@ -1,36 +1,29 @@
 <link rel="import" href="../polymer/polymer-element.html">
 
 <dom-module id="object-to-json">
-  <template>
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <h2>Hello [[prop1]]!</h2>
-  </template>
-
-  <script>
-    /**
-     * `object-to-json`
-     * 
-     *
-     * @customElement
-     * @polymer
-     * @demo demo/index.html
-     */
-    class ObjectToJson extends Polymer.Element {
-      static get is() { return 'object-to-json'; }
-      static get properties() {
-        return {
-          prop1: {
-            type: String,
-            value: 'object-to-json'
-          }
-        };
-      }
-    }
-
-    window.customElements.define(ObjectToJson.is, ObjectToJson);
-  </script>
+    <template></template>
+    <script>
+        class ObjectToJson extends Polymer.Element {
+            static get is() { return 'object-to-json'; }
+            static get properties() {
+                return {
+                    object: {
+                        type: Object,
+                        observer: '_objectChanged',
+                        value: function () {
+                            return {}
+                        }
+                    },
+                    json: {
+                        type: String,
+                        notify: true
+                    }
+                };
+            }
+            _objectChanged(obj) {
+                this.json = JSON.stringify(this.object, null, 2);
+            }
+        }
+        window.customElements.define(ObjectToJson.is, ObjectToJson);
+    </script>
 </dom-module>
